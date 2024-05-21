@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("LSUpsertRtcRoomOnThread",[],(function(a,b,c,d,e,f){function a(){var a=arguments,b=a[a.length-1],c=[];return b.sequence([function(c){return b.db.table(181).put({threadKey:a[0],roomState:a[1],roomUrl:a[2],roomThreadUseCase:a[3],showCtaUntilTimestampSec:a[4],roomExpirationTimestampSec:a[5]})},function(a){return b.resolve(c)}])}e.exports=a}),null);

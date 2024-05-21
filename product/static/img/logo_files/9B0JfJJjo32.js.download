@@ -1,0 +1,5 @@
+;/*FB_PKG_DELIM*/
+
+__d("GroupComposerExtentionsUsageFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(a,b,c,d,e,f,g){"use strict";a=c("getFalcoLogPolicy_DO_NOT_USE")("350");b=d("FalcoLoggerInternal").create("group_composer_extentions_usage",a);e=b;g["default"]=e}),98);
+__d("GroupHighlightVpvFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(a,b,c,d,e,f,g){"use strict";a=c("getFalcoLogPolicy_DO_NOT_USE")("356");b=d("FalcoLoggerInternal").create("group_highlight_vpv",a);e=b;g["default"]=e}),98);
+__d("GroupReelsInPublisherBarClickedFalcoEvent",["FalcoLoggerInternal","getFalcoLogPolicy_DO_NOT_USE"],(function(a,b,c,d,e,f,g){"use strict";a=c("getFalcoLogPolicy_DO_NOT_USE")("2804");b=d("FalcoLoggerInternal").create("group_reels_in_publisher_bar_clicked",a);e=b;g["default"]=e}),98);

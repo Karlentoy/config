@@ -1,0 +1,46 @@
+{% load static %}
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="inner-header">
+            <div class="logo">
+                <a href="{% url 'home' %}"><img style="height: 250px;" src="{% static 'img/logo.jpg' %}" alt=""></a>
+            </div>
+            <div class="header-right">
+                <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
+                <a href="{% url 'cart' %}">
+                    <img src="{% static 'img/icons/bag.png' %}" alt="">
+                    <span>{{cart|length}}</span>
+                </a>
+            </div>
+            {% if not request.user.is_authenticated %}
+            <div class="user-access">
+                <a href="{% url 'login' %}">Register</a>
+                <a href="{% url 'login' %}" class="in">Sign in</a>
+            </div>
+            {% endif %}
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li><a class="" href="{% url 'home' %}">Home</a></li>
+                    <li><a class="" href="{% url 'product-list' %}">Products</a></li>
+                    <li><a href="#">Categories</a>
+                        <ul class="sub-menu">
+                            {% for category in categories %}
+                            <li><a href="{% url 'category-details' category.slug %}">{{category.title|title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li><a href="#">
+                        <img src="{% static 'img/icons/man.png' %}" alt="">
+                    </a>
+                        <ul class="sub-menu">
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            <li><a href="{% url 'orders' %}">Orders</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

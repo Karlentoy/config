@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+{% include 'slider.html' %}
+
+<!-- Latest Product Begin -->
+<section class="latest-products spad">
+    <div class="container">
+        <div class="product-filter">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Featured Products</h2>
+                    </div>
+                    <ul class="product-controls">
+                        <li data-filter="*">All</li>
+                        {% for category in featured_categories %}
+                        <li data-filter=".{{category.slug}}">{{category.title|title}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="product-list">
+            {% for category in featured_categories %}
+            {% for product in category.products.all %}
+            <div class="col-lg-3 col-sm-6 mix {{category.slug}}">
+                <div class="single-product-item">
+                    <figure>
+                        <a href="{% url 'product-details' product.slug %}"><img style="height: 320px;" src="{{product.thumbnail}}" alt=""></a>
+                        <div class="p-status">{{product.category.title|title}}</div>
+                    </figure>
+                    <div class="product-text">
+                        <a class="text-decoration-none" href="{% url 'product-details' product.slug %}">
+                        <h6>{{product.title}}</h6>
+                        </a>
+                        <p>${{product.price}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="features-section spad">
+    <div class="features-ads">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-features-ads first">
+                        <img src="{% static 'img/icons/f-delivery.png' %}" alt="">
+                        <h4>Free shipping</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads second">
+                        <img src="{% static 'img/icons/coin.png' %}" alt="">
+                        <h4>100% Money back </h4>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads">
+                        <img src="{% static 'img/icons/chat.png' %}" alt="">
+                        <h4>Online support 24/7</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Product End -->
+
+{% endblock content %}

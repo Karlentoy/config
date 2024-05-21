@@ -1,0 +1,30 @@
+{% block content %}
+{% include 'slider.html' %}
+
+<canvas id="ordersChart" style="max-width: 400px; max-height: 200px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('ordersChart').getContext('2d');
+    var todayOrdersCount = "{{ today_orders_count|safe }}";
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Today'],
+            datasets: [{
+                label: 'Number of Orders',
+                data: [todayOrdersCount],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{ticks: {beginAtZero: true}}]
+            }
+        }
+    });
+</script>
+{% endblock content %}

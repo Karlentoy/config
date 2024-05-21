@@ -1,0 +1,107 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %} Cart Items {% endblock title %}
+
+{% block content %}
+
+    <!-- Page Add Section Begin -->
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="page-breadcrumb">
+                        {% if cart %}
+                        <h3>Cart ({{cart|length}})</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Add Section End -->
+
+    <!-- Cart Page Section Begin -->
+    {% if cart %}
+    <div class="cart-page">
+        <div class="container">
+            <div class="row py-2">
+                <div class="col-md-12">
+                    {% if messages %}
+                    {% include '../message.html' %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="cart-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="product-h">Product</th>
+                            <th>Price</th>
+                            <th class="quan">Quantity</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart %}
+                        {% with product=item.product %}
+                        <tr>
+                            <td class="product-col">
+                                <img src="{{product.thumbnail}}" alt="">
+                                <div class="p-title">
+                                    <h5>{{product.title}}</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">$ {{product.price|floatformat:"2"}}</td>
+                            <td class="quantity-col">
+                                <div class="pro-qty">
+                                    <a href="?product_id={{product.id}}&&quantity=-1">
+                                        <span class="dec qtybtn">-</span>
+                                    </a>
+                                    <input disabled type="text" value="{{item.quantity}}">
+                                    <a href="?product_id={{product.id}}&&quantity=1">
+                                        <span class="inc qtybtn">+</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="total">$ {{item.subtotal|floatformat:"2"}}</td>
+                            <td class="product-close">
+                                <a class="text-decoration-none text-dark" href="?product_id={{product.id}}&&quantity=-{{item.quantity}}">X</a>
+                            </td>
+                        </tr>
+                        {% endwith %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+                <h4 class="text-center" >
+                    <strong>Total = </strong> $ {{cart.total}}
+                </h4>
+            </div>
+            <div class="cart-btn">
+                <div class="row">
+                    <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
+                        <div class="site-btn clear-btn">
+                            <a class="text-decoration-none text-dark" href="?clear=true">
+                                Clear Cart
+                            </a>
+                        </div>
+                        <div class="site-btn clear-btn">
+                            <a class="text-decoration-none text-dark" href="{% url 'checkout' %}">
+                                Checkout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="cart-page">
+        <div class="container">
+            {% include '../no-cart.html' %}
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock content %}

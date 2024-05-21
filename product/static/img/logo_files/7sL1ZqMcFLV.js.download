@@ -1,0 +1,4 @@
+;/*FB_PKG_DELIM*/
+
+__d("CometAlbumEditItemDropdownQuery_facebookRelayOperation",[],(function(a,b,c,d,e,f){e.exports="7970305446350641"}),null);
+__d("LSUpdateTypingIndicator",[],(function(a,b,c,d,e,f){function a(){var a=arguments,b=a[a.length-1],c=[],d=[];return b.sequence([function(d){return b.sequence([function(d){return a[2]?(c[0]=b.i64.of_float(Date.now()),b.db.table(52).put({threadKey:a[0],senderId:a[1],expirationTimestampMs:b.i64.add(c[0],b.i64.cast([0,5e3]))})):b.resolve()},function(c){return a[2]?b.resolve():b.forEach(b.filter(b.db.table(52).fetch([[[a[0],a[1]]]]),function(c){return b.i64.eq(c.threadKey,a[0])&&b.i64.eq(b.i64.cast([0,0]),b.i64.cast([0,0]))&&b.i64.eq(c.senderId,a[1])}),function(a){return a["delete"]()})}])},function(a){return b.resolve(d)}])}e.exports=a}),null);

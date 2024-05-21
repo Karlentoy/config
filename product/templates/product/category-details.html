@@ -1,0 +1,52 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %} {{category.title|title}} {% endblock title %}
+
+{% block content %}
+
+{% if products.count > 0 %}
+
+<section class="page-add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="page-breadcrumb">
+                    <h3>{{category.title|title}} ({{products.count}})</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- Page Add Section End -->
+
+<!-- Categories Page Section Begin -->
+<section class="categories-page spad">
+    <div class="container">
+        {% if products.count > 0 %}
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-6 col-md-6">
+                <div class="single-product-item">
+                    <a href="{% url 'product-details' product.slug %}">
+                        <figure>
+                            <img style="height: 320px;" src="{{product.thumbnail}}" alt="">
+                        </figure>
+                    </a>
+                    <div class="product-text">
+                        <a href="{% url 'product-details' product.slug %}">
+                            <h6>{{product.title|title}}</h6>
+                        </a>
+                        <p>${{product.price}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+</section>
+
+{% endblock content %}

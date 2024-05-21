@@ -1,0 +1,5 @@
+;/*FB_PKG_DELIM*/
+
+__d("ProfileTransparencyDialogQuery_facebookRelayOperation",[],(function(a,b,c,d,e,f){e.exports="7378984218852132"}),null);
+__d("ProfileTransparencyDialogQuery$Parameters",["ProfileTransparencyDialogQuery_facebookRelayOperation"],(function(a,b,c,d,e,f){"use strict";a={kind:"PreloadableConcreteRequest",params:{id:b("ProfileTransparencyDialogQuery_facebookRelayOperation"),metadata:{},name:"ProfileTransparencyDialogQuery",operationKind:"query",text:null}};e.exports=a}),null);
+__d("ProfileTransparencyDialog.entrypoint",["JSResourceForInteraction","ProfileTransparencyDialogQuery$Parameters","WebPixelRatio"],(function(a,b,c,d,e,f,g){"use strict";a={getPreloadProps:function(a){var b=d("WebPixelRatio").get();return{queries:{profileTransparencyDialogQueryReference:{parameters:c("ProfileTransparencyDialogQuery$Parameters"),variables:{pageID:a.pageID,scale:b}}}}},root:c("JSResourceForInteraction")("ProfileTransparencyDialog.react").__setRef("ProfileTransparencyDialog.entrypoint")};g["default"]=a}),98);
